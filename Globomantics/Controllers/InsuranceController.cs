@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Globomantics.Models;
 using Globomantics.Core.Models;
+using Globomantics.Filters;
 
 namespace Globomantics.Controllers
 {
+    [FeatureAuthFilter(FeatureName ="Insurance")]
     public class InsuranceController : Controller
     {
         public IActionResult Index()
@@ -19,7 +21,7 @@ namespace Globomantics.Controllers
         [HttpPost]
         public IActionResult Index(Contact contact)
         {
-            return View();
+            return RedirectToAction("Confirmation", "Insurance");
         }
 
         public IActionResult Confirmation()
