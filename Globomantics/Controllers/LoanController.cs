@@ -13,7 +13,7 @@ using Globomantics.Filters;
 namespace Globomantics.Controllers
 {
     //[FeatureAuthFilter(FeatureName = "Loan")]
-    [TypeFilter(typeof(FeatureAuthTypeFilter), Arguments = new object[] { "Loan"})]
+    //[TypeFilter(typeof(FeatureAuthTypeFilter), Arguments = new object[] { "Loan"})]
     public class LoanController : Controller
     {
         private ILoanService loanService;
