@@ -9,7 +9,6 @@ using Globomantics.Services;
 
 namespace Globomantics.Controllers
 {
-    [Route("api/[controller]")]
     public class RatesController : Controller
     {
         private IRateService rateService;
@@ -20,12 +19,19 @@ namespace Globomantics.Controllers
         }
 
         [HttpGet]
-        [Route("mortgage")]
+        [Route("api/rates/mortage")]
+        [Route("api/{version:versionCheck(1)}/rates/mortage")]
         public IActionResult GetMortgageRates()
         {
             return Ok(rateService.GetMortgageRates());
         }
 
+        [HttpGet]
+        [Route("api/{version:versionCheck(2)}/rates/mortage")]
+        public IActionResult GetMortgageRatesV2()
+        {
+            return Ok(rateService.GetMortgageRates());
+        }
         [HttpGet]
         [Route("credit")]
         public IActionResult GetCreditCardRates()

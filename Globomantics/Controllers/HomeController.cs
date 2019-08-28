@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Globomantics.Models;
 using Globomantics.Services;
 using Globomantics.Core.Models;
+using Globomantics.Constraints;
 
 namespace Globomantics.Controllers
 {
@@ -18,12 +19,22 @@ namespace Globomantics.Controllers
         {
             this.rateService = rateService;
         }
-
+        [Route("home/promotion/{token:tokenCheck}")]
+        public IActionResult Promotion()
+        {
+            return View();
+        }
+        [Route("")]
         public IActionResult Index()
         {
             return View();
         }
-
+        [Route("")]
+        [MobileSelector]
+        public IActionResult MobileIndex()
+        {
+            return View();
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
