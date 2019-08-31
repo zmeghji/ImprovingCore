@@ -8,6 +8,7 @@ using Globomantics.Models;
 using Globomantics.Services;
 using Globomantics.Core.Models;
 using Globomantics.Constraints;
+using Globomantics.Conventions;
 
 namespace Globomantics.Controllers
 {
@@ -19,6 +20,14 @@ namespace Globomantics.Controllers
         {
             this.rateService = rateService;
         }
+
+        [Route("home/promotion2/{token:tokenCheck}")]
+        public IActionResult Promotion2([BindName(Name ="token")] string promoCode)
+        {
+            ViewBag.Token = promoCode;
+            return View();
+        }
+
         [Route("home/promotion/{token:tokenCheck}")]
         public IActionResult Promotion()
         {
