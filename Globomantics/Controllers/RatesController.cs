@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Globomantics.Models;
 using Globomantics.Services;
+using Globomantics.Middleware;
 
 namespace Globomantics.Controllers
 {
+    [MiddlewareFilter(typeof(BasicAuthConfig))]
     public class RatesApiController : Controller
     {
         private IRateService rateService;
